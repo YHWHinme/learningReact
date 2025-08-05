@@ -2,7 +2,6 @@ import MovieCard from "../components/MovieCard"
 
 
 function Home() {
-    
     const HandleSearch = () => {
         alert()
     }
