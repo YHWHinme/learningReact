@@ -6,7 +6,8 @@ function MovieCard({movie}) {
                 <img src={movie.url} alt={movie.title} className="poster_image" />
             </div>
         {/* Text */}
-        <div>
+			{/* TODO: Add button part under here */}
+        <div className="Text">
            <h2>
             {movie.title}
             </h2> 
