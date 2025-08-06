@@ -3,12 +3,12 @@ import { useState } from 'react';
 
 function Home() {
 	// Setting use state
-	const [searchQuery, setSearchQuery] = useState()
+	const [searchQuery, setSearchQuery] = useState("")
 	// Setting HandleSearch
   const HandleSearch = (e) => {
+		e.preventDefault()
 		alert(searchQuery)
 		setSearchQuery("---")
-		e.preventDefaultBehaviour()
   }
 
   const movies = [
@@ -21,22 +21,14 @@ function Home() {
   	<div className="home">
 			{/* Search section */}
 				<form className="search-form"  >
-					<input type="text" 
-					onSubmit={HandleSearch}
-					placeholder="Search for movies... " 
-					className="search-input"
-					value = {searchQuery}
-					onChange{(e) => {
-						e.target.value(setSearchQuery)
-					}}
-				/>
+				<input className="search-input" type="text" value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)}/>
 				</form>
 			{/* Search Button */}
 			<button type="submit" className="search-button">Search</button>
 			{/* Array of movies */}
       	<div className="movie-grid">
           	{movies.map(movie => (
-							movie.title.toLowerCase().startsWith(searchQuery).toLowerCase() && <MovieCard movie={movie} key={movie.id} />
+							movie.title.toLowerCase().startsWith(searchQuery.toLowerCase()) && <MovieCard movie={movie} key={movie.id} />
   	    	))} 
       	</div>
   	</div>
