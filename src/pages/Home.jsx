@@ -21,7 +21,15 @@ function Home() {
   	<div className="home">
 			{/* Search section */}
 				<form className="search-form"  >
-					<input type="text" onSubmit={HandleSearch} placeholder="Search for movies... " className="search-input" />
+					<input type="text" 
+					onSubmit={HandleSearch}
+					placeholder="Search for movies... " 
+					className="search-input"
+					value = {searchQuery}
+					onChange{(e) => {
+						e.target.value(setSearchQuery)
+					}}
+				/>
 				</form>
 			{/* Search Button */}
 			<button type="submit" className="search-button">Search</button>
