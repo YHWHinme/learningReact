@@ -2,9 +2,13 @@ import MovieCard from "../components/MovieCard"
 import { useState } from 'react';
 
 function Home() {
+	// Setting use state
 	const [searchQuery, setSearchQuery] = useState()
-  const HandleSearch = () => {
-        alert()
+	// Setting HandleSearch
+  const HandleSearch = (e) => {
+		alert(searchQuery)
+		setSearchQuery("---")
+		e.preventDefaultBehaviour()
   }
 
   const movies = [
@@ -13,15 +17,21 @@ function Home() {
       {id: 3, title: "Joshua the Giant", release_date: "2026"},
     ]
 
-
   return (
-      <div className="home">
-          <div className="movie-grid">
-              {movies.map(movie => (
-                  <MovieCard movie={movie} key={movie.id} />
-              ))} 
-          </div>
-      </div>
+  	<div className="home">
+			{/* Search section */}
+				<form className="search-form"  >
+					<input type="text" onSubmit={HandleSearch} placeholder="Search for movies... " className="search-input" />
+				</form>
+			{/* Search Button */}
+			<button type="submit" className="search-button">Search</button>
+			{/* Array of movies */}
+      	<div className="movie-grid">
+          	{movies.map(movie => (
+							movie.title.toLowerCase().startsWith(searchQuery).toLowerCase() && <MovieCard movie={movie} key={movie.id} />
+  	    	))} 
+      	</div>
+  	</div>
   )
 }
 

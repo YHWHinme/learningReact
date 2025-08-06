@@ -1,4 +1,9 @@
+// Importing system functionality
+
 function MovieCard({movie}) {
+	function SetFavourite () {
+		alert("Favourite movie set!")
+	}
     return (
         <div className="MovieCard">
         {/* Poster */}
@@ -6,7 +11,9 @@ function MovieCard({movie}) {
                 <img src={movie.url} alt={movie.title} className="poster_image" />
             </div>
         {/* Text */}
-			{/* TODO: Add button part under here */}
+			<button className="movie-button" onClick={SetFavourite}>
+				h
+			</button>
         <div className="Text">
            <h2>
             {movie.title}
