@@ -8,7 +8,6 @@ function Home() {
   const HandleSearch = (e) => {
     e.preventDefault();
     alert(searchQuery);
-    setSearchQuery("---");
   };
 
   const movies = [
