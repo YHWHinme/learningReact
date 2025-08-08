@@ -2,21 +2,44 @@ import MovieCard from "../components/MovieCard";
 import { useState } from "react";
 // Importing css styling
 import "../css/Home.css";
+// Import backend
+import {searchMovies, getPopularMovies} from "../services/api.js"
 
+// Component
 function Home() {
   // Setting use state
   const [searchQuery, setSearchQuery] = useState("");
+	// Storing movies in state
+  const [movies, setMovies] = useState([]);
+	// Error handling
+  const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(true);
+
+	useEffect(() => {
+	  const loadPopularMovies = async () => {
+			try {
+				const popularMovies = await getPopularMovies()
+				setMovies(popularMovies)
+			}
+		} 
+		catch(err) {
+			setError("Failed to load movies...")
+			console.log(err)
+		}
+		finally {
+			// Setting loading to false
+			setLoading(false)
+		}
+		
+		loadPopularMovies()
+
+	}, [])
+
   // Setting HandleSearch
   const HandleSearch = (e) => {
     e.preventDefault();
     alert(searchQuery);
   };
-
-  const movies = [
-    { id: 1, title: "John Wick", release_date: "2024" },
-    { id: 2, title: "Hello Kitty", release_date: "2025" },
-    { id: 3, title: "Joshua the Giant", release_date: "2026" },
-  ];
 
   return (
     <div className="home">

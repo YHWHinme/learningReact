@@ -10,7 +10,7 @@ function MovieCard({ movie }) {
     <div className="MovieCard">
       {/* Poster */}
       <div className="poster">
-        <img src={movie.url} alt={movie.title} className="poster_image" />
+        <img src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} alt={movie.title} className="poster_image" />
       </div>
       {/* Text */}
       <button className="movie-button" onClick={SetFavourite}>
