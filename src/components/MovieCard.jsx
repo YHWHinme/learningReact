@@ -1,4 +1,6 @@
 // Importing system functionality
+// IMporting css styling
+import "../css/MovieCard.css";
 
 function MovieCard({ movie }) {
   function SetFavourite() {

@@ -1,5 +1,7 @@
 import MovieCard from "../components/MovieCard";
 import { useState } from "react";
+// Importing css styling
+import "../css/Home.css";
 
 function Home() {
   // Setting use state
@@ -28,7 +30,7 @@ function Home() {
         />
       </form>
       {/* Search Button */}
-      <button type="submit" className="search-button">
+      <button type="submit" className="search-button" onClick={HandleSearch}>
         Search
       </button>
       {/* Array of movies */}
